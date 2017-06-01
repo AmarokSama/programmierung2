@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Iterator
+comment1.params=
+comment1.target=Iterator()
+comment2.params=x0\ n\ function
+comment2.target=double\ iterator(double,\ int,\ java.util.function.DoubleFunction)
+numComments=3

@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=ApplyAndPrint
+comment1.params=
+comment1.target=ApplyAndPrint()
+comment2.params=i\ j\ function
+comment2.target=void\ applyAndPrint(int,\ int,\ java.util.function.IntFunction)
+numComments=3
