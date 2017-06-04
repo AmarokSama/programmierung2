@@ -1,0 +1,27 @@
+#BlueJ class context
+comment0.params=artikelNr\ titel\ dauer\ jahr\ bestand\ preis
+comment0.target=DVD(int,\ java.lang.String,\ int,\ int,\ int,\ double)
+comment0.text=\r\n\ Konstruktor\ der\ Klasse\ DVD\ mit\ allen\ Eigenschaften\ eines\ Artikels\ und\ zusaetzlich\ DVD-spezifischen\r\n@param\ artikelNr\ Die\ artikelnummer\ dieser\ DVD\r\n@param\ titel\ der\ Titel\ dieser\ DVD\r\n@param\ dauer\ die\ Dauer\ des\ Films\r\n@param\ jahr\ das\ ERscheinungsjahr\ des\ Films\r\n@param\ bestand\ Die\ anzahl\ der\ DVDs\ die\ auf\ Lager\ sind\r\n@param\ preis\ Der\ preis\ der\ DVD\r\n
+comment1.params=dauer
+comment1.target=void\ checkDauer(int)
+comment2.params=jahr
+comment2.target=void\ checkJahr(int)
+comment3.params=
+comment3.target=java.lang.String\ getBeschreibung()
+comment3.text=\r\n\ Eine\ get-Methode\ um\ die\ Beschreibung\ einer\ DVD\ auszugeben\r\n\ \r\n\ @return\ \ die\ Bezeichnung\ der\ DVD\r\n
+comment4.params=
+comment4.target=int\ getJahr()
+comment4.text=\r\n\ Eine\ get-Methode\ um\ die\ Beschreibung\ einer\ DVD\ auszugeben\r\n\ \r\n\ @return\ \ das\ Erscheinungsjahr\ dieser\ DVD\r\n
+comment5.params=jahr
+comment5.target=void\ setJahr(int)
+comment5.text=\r\n\ Eine\ set-Methode\ um\ das\ Erscheinungsjahr\ zu\ veraendern\r\n\ @param\ neues\ Erscheinungsjahhr,\ zwischen\ 1949\ und\ 2017\r\n
+comment6.params=
+comment6.target=int\ getDauer()
+comment6.text=\r\n\ Eine\ get-Methode\ um\ die\ Dauer\ einer\ DVD\ auszugeben\r\n\ \r\n\ @return\ \ die\ Dauer\ dieser\ DVD\r\n
+comment7.params=dauer
+comment7.target=void\ setDauer(int)
+comment7.text=\r\n\ Eine\ set-Methode\ um\ die\ Dauer\ des\ Filmes\ zu\ aendern\r\n\ @param\ dauer\ neue\ Dauer\ des\ Filmes\r\n
+comment8.params=
+comment8.target=java.lang.String\ toString()
+comment8.text=\r\n\ Eine\ toString\ Methode\ um\ die\ DVD\ darzustellen\r\n\ @return\ alle\ Eigenschaften\ der\ DVD\r\n
+numComments=9

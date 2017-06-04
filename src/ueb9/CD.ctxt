@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.params=artikelNr\ bezeichnung\ interpret\ titel\ anzahlTitel\ bestand\ preis
+comment0.target=CD(int,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ int,\ int,\ double)
+comment0.text=\r\n\ Konstruktor\ fuer\ Objekte\ der\ Klasse\ CD,\ mit\ allen\ Eigenschaften\ eines\ Artikels\ und\ zusaetzlich\ CD-spezifischen\r\n\ @param\ artikelNr\ \ \ \ \ Die\ Artikelnummer\ dieser\ CD\r\n\ @param\ interpret\ \ \ \ \ Der\ S\u00E4nger\ dieser\ CD\r\n\ @param\ titel\ \ \ \ \ \ \ \ \ Der\ Titel\ dieser\ CD\r\n\ @param\ anzahlTitel\ \ \ Die\ Anzahl\ der\ Titel\ auf\ dieser\ CD\r\n\ @param\ bestand\ \ \ \ \ \ \ Der\ Bestand\ dieser\ CD\ im\ Lager\r\n\ @param\ preis\ \ \ \ \ \ \ \ \ Der\ Preis\ dieser\ CD\r\n
+comment1.params=interpret
+comment1.target=void\ checkInterpret(java.lang.String)
+comment2.params=titel
+comment2.target=void\ checkTitel(java.lang.String)
+comment3.params=anzahlTitel
+comment3.target=void\ checkAnzahlTitel(int)
+comment4.params=
+comment4.target=java.lang.String\ getBeschreibung()
+comment4.text=\r\n\ Eine\ get-Methode\ um\ die\ Beschreibung\ einer\ CD\ auszugeben\r\n\ \r\n\ @return\ Bezeichung\ einer\ CD\r\n
+comment5.params=
+comment5.target=java.lang.String\ toString()
+comment5.text=\r\n\ Eine\ to-String\ Methode\ um\ die\ CD\ auszugeben\r\n\ @return\ alle\ eigenschaften\ der\ CD\r\n
+comment6.params=
+comment6.target=int\ getAnzahlTitel()
+comment6.text=\r\n\ Eine\ get-Methode\ um\ die\ Anzahl\ an\ titels\ auszugeben\r\n\ \r\n\ @return\ annzahlTitel\r\n
+comment7.params=anzahlTitel
+comment7.target=void\ setAnzahlTitel(int)
+comment7.text=\r\n\ Eine\ set-Methode\ um\ die\ Anzahl\ an\ Titeln\ auf\ einer\ CD\ zu\ aendern\r\n\ @param\ anzahlTitel\ neue\ Anzahl\ an\ Titeln\r\n
+numComments=8

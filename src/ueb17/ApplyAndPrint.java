@@ -15,4 +15,6 @@ public class ApplyAndPrint {
 		}
 		System.out.print(sResult);
 	}
+	
+	
 }
