@@ -83,6 +83,6 @@ public class Buch extends Artikel
      * @return alle eigenschaften eines Buches
      */
     public String toString(){
-        return super.toString() + "Verlag: " + verlag;
+        return super.toString() + "\n Verlag: " + verlag;
     }
 }

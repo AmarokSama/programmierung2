@@ -22,26 +22,14 @@ public class SomeMathFunction {
     }
     
     public static int xFibonacci(int x){
-        if(x<=0){
-            return 0;
+    	
+    	if(x <= 0){
+    		return 0;     
         }
-        else if(x==1){
-            return 1;
-        }
-        else
-        {
-            int a=0;
-            int b=1;
-            int i=2;
-            while(i<=x)
-            {
-                int aa=b;
-                int bb=a+b;
-                a=aa; 
-                b=bb; 
-                i++; 
-            }
-            return b; 
-        } 
+    	else if(x == 1){
+    		return 1;
+    	}else{
+    		return xFibonacci(x-1) +xFibonacci(x-2);
+    	}
     }
 }

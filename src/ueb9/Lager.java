@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.function.*;
 /**
  * Ein Lager in dem die Artikel gelagert, geloescht und bearbeitet  werden
  * 
@@ -7,11 +8,16 @@ import java.util.*;
  */
 public class Lager
 {
-    private String lagerName;
-    private Artikel[] artikelTab;
-    private int anzahlArtikel;
-    private double wert;
-    private double gesamtWert;
+    private String      lagerName;
+    private Artikel[]   artikelTab;
+    private int         anzahlArtikel;
+    private double      wert;
+    private double      gesamtWert;
+    private double      preis;
+    private int         bestand;
+    private String      bzg;
+    private int         nummer;
+    
 
     private static final String MSG_ARTIKEL_NICHT_VORHANDEN =
         "Artikel nicht vorhanden!";
@@ -214,47 +220,126 @@ public class Lager
         System.out.printf("%-50s" + gesamtWert + "\n", "Gesamtwert: ");
     }
     
-    
-    
-    public ArrayList<Artikel> getSorted(String kriterium){
-        ArrayList<Artikel> artiListe = new ArrayList<Artikel>();
-        switch(kriterium){
-            case("nummer"):
-                
-            break;
-            case("bzg"):
-            
-            break;
-            case("bestand"):
-            
-            break;
-            case("preis"):
-            
-            break;
-            
-        }
-        return artiListe;
+    public void getAll(Artikel a){
+        preis = a.getPreis();
+        bestand = a.getBestand();
+        bzg = a.getArtikelbzg();
+        nummer = a.getArtikelnr();
     }
     
-    /*public ArrayList<Artikel> filter(String kriterium, String vergleich, String ziel){      
-        ArrayList<Artikel> artiListe = new ArrayList<Artikel>();
-        for(int i = 0; i< anzahlArtikel; i++){
-            if (kriterium == "nummer"){
-                if (artikelTab[i].getArtikelnr())
+    public Artikel[] getSorted(Artikel[] stock, String kriterium){
+        Artikel [] lagerKopie = new Artikel[anzahlArtikel];
+        
+        switch(kriterium){
+            case ("bzg"):{
+                for(int i = 0; i < anzahlArtikel; i++){
+                    int indexKuerzeste = 0;
+                    String kuerzeste = "Dies ist der laengsste String da das Lager leer ist";
+                    for(int j = 0; j < anzahlArtikel - i; j++){
+                        String aktuelleBzg = artikelTab[j].getArtikelbzg();
+                        if (aktuelleBzg.length() < kuerzeste.length()){
+                            kuerzeste = aktuelleBzg;
+                            indexKuerzeste = j;
+                        }
+                    }
+                    lagerKopie[i] = artikelTab[indexKuerzeste];
+                    artikelEntfernen(artikelTab[indexKuerzeste].getArtikelnr());
+                }
+                break;
             }
-            else if (kriterium == "bzg"){
-            
+            case ("nr"):{
+                for(int i = 0; i < anzahlArtikel; i++){
+                    int indexKleinste = 0;
+                    int kleinste = 10000;
+                    for(int j = 0; j < anzahlArtikel - i; j++){
+                        int aktuelleNr = artikelTab[j].getArtikelnr();
+                        if (aktuelleNr < kleinste){
+                            kleinste = aktuelleNr;
+                            indexKleinste = j;
+                        }
+                    }
+                    lagerKopie[i] = artikelTab[indexKleinste];
+                    artikelEntfernen(artikelTab[indexKleinste].getArtikelnr());
+                }
+                break;
             }
-            else if (kriterium == "preis"){
-            
+            case ("preis"):{
+                for(int i = 0; i < anzahlArtikel; i++){
+                    int indexKleinster = 0;
+                    double kleinster = Double.MAX_VALUE;
+                    for(int j = 0; j < anzahlArtikel - i; j++){
+                        double aktuellerPreis = artikelTab[j].getPreis();
+                        if (aktuellerPreis < kleinster){
+                            kleinster = aktuellerPreis;
+                            indexKleinster = j;
+                        }
+                    }
+                    lagerKopie[i] = artikelTab[indexKleinster];
+                    artikelEntfernen(artikelTab[indexKleinster].getArtikelnr());
+                }
+                break;
             }
-            else if (kriterium == "bestand"){
-            
+            case ("bestand"):{
+                for(int i = 0; i < anzahlArtikel; i++){
+                    int indexKleinster = 0;
+                    int kleinster = Integer.MAX_VALUE;
+                    for(int j = 0; j < anzahlArtikel - i; j++){
+                        int aktuellerBestand = artikelTab[j].getBestand();
+                        if (aktuellerBestand < kleinster){
+                            kleinster = aktuellerBestand;
+                            indexKleinster = j;
+                        }
+                    }
+                    lagerKopie[i] = artikelTab[indexKleinster];
+                    artikelEntfernen(artikelTab[indexKleinster].getArtikelnr());
+                }
+                break;
             }
         }
-        return artiListe;
-    }*/
+        artikelTab = lagerKopie;
+        return lagerKopie;
+    }
     
+    public void filter(boolean tester){        
+        UnaryOperator <Artikel> teste = a -> (tester) ? a : null;
+        for(Artikel a : artikelTab){
+             getAll(a);
+             teste.apply(a);
+        }
+    }
+    
+    public void applyToArticles(UnaryOperator<Artikel> function){
+        for(Artikel a: this.artikelTab){
+            getAll(a);
+            function.apply(a);
+        }
+    }
+    
+    public void applyToSomeArticles(boolean test, UnaryOperator<Artikel> function){
+        UnaryOperator <Artikel> teste = a -> (test) ? a : null;
+        for(Artikel a : artikelTab){
+             getAll(a);
+             if(teste.apply(a) != null){
+                 function.apply(a);
+             };
+        }
+    }
+    
+    public Artikel[] getArticles(boolean tester, String kriter){
+        Artikel[] ausgabe = new Artikel[anzahlArtikel];
+        int anzahlAusgabe = 0;
+        UnaryOperator <Artikel> teste = a -> (tester) ? a : null;
+        for(Artikel a : artikelTab){
+            getAll(a);
+            if(teste.apply(a) != null){
+                ausgabe[anzahlAusgabe] = a;
+                anzahlAusgabe++;
+            }
+        }
+        return getSorted(ausgabe, kriter);
+    }
+    
+        
     /**
      * Eine Methode zur Ueberpruefung einer gegebenen bedingung und falls diese nichr erfuelllt ist, werfen einer fehlermeldung 
      *@param bedinngung  Eine Bedingung wird auf Richtigkeit ueberprueft
